@@ -1,0 +1,65 @@
+.slot-toggle {
+  padding: 2rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.toggle-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.toggle-label {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.toggle-btn {
+  width: 60px;
+  height: 30px;
+  background-color: #ccc;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s;
+  padding: 0;
+}
+
+.toggle-btn.active {
+  background-color: #4caf50;
+}
+
+.toggle-circle {
+  width: 26px;
+  height: 26px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: left 0.3s;
+}
+
+.toggle-btn.active .toggle-circle {
+  left: 32px;
+}
+
+.status-text {
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
+
+.status-text.available {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.status-text.unavailable {
+  background-color: #ffebee;
+  color: #c62828;
+}
