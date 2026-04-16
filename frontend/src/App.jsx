@@ -4,6 +4,7 @@ import { AuthProvider } from './context/AuthContext';
 import { SocketProvider } from './context/SocketContext';
 import Navbar from './components/common/Navbar';
 import Footer from './components/common/Footer';
+import SymptomChatbot from './components/Chatbot/SymptomChatbot';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -27,6 +28,7 @@ function App() {
               element={<ProtectedRoute role="doctor"><DoctorDashboard /></ProtectedRoute>} 
             />
           </Routes>
+          <SymptomChatbot />
           <Footer />
         </Router>
       </SocketProvider>

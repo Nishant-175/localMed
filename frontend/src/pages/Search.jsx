@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import SearchBar from '../components/patient/SearchBar';
 import DoctorCard from '../components/patient/DoctorCard';
 import BookingModal from '../components/patient/BookingModal';
@@ -11,6 +12,7 @@ import api from '../services/api';
 import './Search.css';
 
 function Search() {
+  const [searchParams] = useSearchParams();
   const { location, getLocation } = useGeolocation();
   const { doctors, setDoctors, loading, searchDoctors } = useSearch();
   const socket = useSocket();
@@ -18,6 +20,18 @@ function Search() {
   const [showBookingModal, setShowBookingModal] = useState(false);
   const [currentCity, setCurrentCity] = useState(null);
   const [currentSpecialty, setCurrentSpecialty] = useState(null);
+
+  // Handle URL parameters from chatbot (specialization filter)
+  useEffect(() => {
+    const specialization = searchParams.get('specialization');
+    if (specialization) {
+      setCurrentSpecialty(specialization);
+      // Auto-trigger search if location is available
+      if (location) {
+        handleSearch({ specialization });
+      }
+    }
+  }, [searchParams, location]);
 
   // Join geo-room when location and specialty are available
   useEffect(() => {
